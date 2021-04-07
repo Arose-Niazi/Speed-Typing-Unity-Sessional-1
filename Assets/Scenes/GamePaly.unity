@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 89216308}
   - component: {fileID: 89216307}
   - component: {fileID: 89216311}
+  - component: {fileID: 89216312}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -153,9 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd33d5988aac834ea5bf207c889ffc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSetting: {fileID: 0}
+  nameInput: {fileID: 0}
   soundSource: {fileID: 535878916}
-  playerNameField: {fileID: 0}
   playerNameText: {fileID: 2008268555}
 --- !u!114 &89216308
 MonoBehaviour:
@@ -220,6 +220,19 @@ MonoBehaviour:
   bestTime: {fileID: 244837523}
   text: {fileID: 944081499}
   timeField: {fileID: 1935675347}
+  user: {fileID: 2008268555}
+--- !u!114 &89216312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89216306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aac70cde2c521164384a7a1a3e4ec400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &244837521
 GameObject:
   m_ObjectHideFlags: 0

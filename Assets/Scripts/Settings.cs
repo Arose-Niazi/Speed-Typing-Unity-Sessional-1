@@ -1,19 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    private static float _gameVolume;
+    private static float _gameVolume = 1f;
     private static string _playerName;
 
-    public Slider volumeSetting;
+    public InputField nameInput;
     public AudioSource soundSource;
-
-    public InputField playerNameField;
-
+    
     public Text playerNameText;
     
     // Start is called before the first frame update
@@ -23,41 +19,21 @@ public class Settings : MonoBehaviour
         {
             playerNameText.text = _playerName;
         }
+        soundSource.volume = _gameVolume;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (volumeSetting != null)
-        {
-            _gameVolume = volumeSetting.value;
-        }
-        if (playerNameField != null)
-        {
-            _playerName = playerNameField.text;
-        }
-        soundSource.volume = _gameVolume;
-
-        if (Input.GetKeyDown("escape"))
-        {
-            PauseGame();
-        }
-        
-    }
     
 
-    public void NextScene()
+    public void VolumeChange(Single sound)
     {
-        SceneManager.LoadScene("GamePaly");
+        _gameVolume = sound;
+        soundSource.volume = sound;
+        
     }
 
-    private void PauseGame()
+    public void NameChange()
     {
-        SceneManager.LoadScene("Menu");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
+        _playerName = nameInput.text;
     }
 }

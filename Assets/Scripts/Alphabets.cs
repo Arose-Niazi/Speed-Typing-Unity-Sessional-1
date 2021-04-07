@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +10,8 @@ public class Alphabets : MonoBehaviour
     public Text bestTime;
     public Text text;
     public Text timeField;
+    public Text user;
+    
     private int _timeMin;
     private int _timeSec;
     private int _pos;
@@ -27,7 +28,8 @@ public class Alphabets : MonoBehaviour
         _bestTimeMin = PlayerPrefs.GetInt("SavedMin", 0);
         _bestTimeSec = PlayerPrefs.GetInt("SavedSec", 0);
         
-        bestTime.text = $"Best Time: {_bestTimeMin:00}:{_bestTimeSec:00}";
+        
+        bestTime.text = $"{PlayerPrefs.GetString("SavedName", "None")} - Best Time: {_bestTimeMin:00}:{_bestTimeSec:00}";
         _timeMin = 0;
         _timeSec = 0;
         _pos = 0;
@@ -78,21 +80,19 @@ public class Alphabets : MonoBehaviour
             {
                 PlayerPrefs.SetInt("SavedMin", _timeMin);
                 PlayerPrefs.SetInt("SavedSec", _timeSec);
+                PlayerPrefs.SetString("SavedName", user.text);
             }
-            else if (_timeMin == _bestTimeMin)
+            else if (_timeMin == _bestTimeMin && _timeSec < _bestTimeSec)
             {
-                if (_timeSec < _bestTimeSec)
-                {
-                    PlayerPrefs.SetInt("SavedMin", _timeMin);
-                    PlayerPrefs.SetInt("SavedSec", _timeSec);
-                }
+                PlayerPrefs.SetInt("SavedMin", _timeMin);
+                PlayerPrefs.SetInt("SavedSec", _timeSec);
+                PlayerPrefs.SetString("SavedName", user.text);
             }
             else if (_bestTimeSec == 0 && _bestTimeMin == 0)
             {
-                Debug.Log("This is called Passed!");
-                
                 PlayerPrefs.SetInt("SavedMin", _timeMin);
                 PlayerPrefs.SetInt("SavedSec", _timeSec);
+                PlayerPrefs.SetString("SavedName", user.text);
             }
             PlayerPrefs.Save();
             SceneManager.LoadScene("Menu");
