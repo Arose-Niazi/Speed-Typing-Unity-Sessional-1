@@ -24,15 +24,15 @@ public class Alphabets : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _bestTimeMin = PlayerPrefs.GetInt("Min", 0);
-        _bestTimeSec = PlayerPrefs.GetInt("Sec", 0);
-
-        bestTime.text = String.Format("Best Time: "+_bestTimeMin+":"+_bestTimeSec);
+        _bestTimeMin = PlayerPrefs.GetInt("SavedMin", 0);
+        _bestTimeSec = PlayerPrefs.GetInt("SavedSec", 0);
+        
+        bestTime.text = $"Best Time: {_bestTimeMin:00}:{_bestTimeSec:00}";
         _timeMin = 0;
         _timeSec = 0;
         _pos = 0;
         
-        InvokeRepeating("Timer", 1f, 1f);
+        InvokeRepeating(nameof(Timer), 1f, 1f);
     }
 
     public void Timer()
@@ -40,7 +40,8 @@ public class Alphabets : MonoBehaviour
         if (_pos != keysOrder.Length)
             _timeSec++;
     }
-    // Update is called once per frame
+    
+    
     void Update()
     {
         if (_pos == keysOrder.Length)
@@ -69,27 +70,29 @@ public class Alphabets : MonoBehaviour
             _timeMin++;
         }
 
-        timeField.text = String.Format("Time: "+_timeMin+":"+_timeSec);
+        timeField.text = $"Time: {_timeMin:00}:{_timeSec:00}";
 
         if (_pos == keysOrder.Length)
         {
             if (_timeMin < _bestTimeMin)
             {
-                PlayerPrefs.SetInt("Min", _timeMin);
-                PlayerPrefs.SetInt("Sec", _timeSec);
+                PlayerPrefs.SetInt("SavedMin", _timeMin);
+                PlayerPrefs.SetInt("SavedSec", _timeSec);
             }
             else if (_timeMin == _bestTimeMin)
             {
                 if (_timeSec < _bestTimeSec)
                 {
-                    PlayerPrefs.SetInt("Min", _timeMin);
-                    PlayerPrefs.SetInt("Sec", _timeSec);
+                    PlayerPrefs.SetInt("SavedMin", _timeMin);
+                    PlayerPrefs.SetInt("SavedSec", _timeSec);
                 }
             }
             else if (_bestTimeSec == 0 && _bestTimeMin == 0)
             {
-                PlayerPrefs.SetInt("Min", _timeMin);
-                PlayerPrefs.SetInt("Sec", _timeSec);
+                Debug.Log("This is called Passed!");
+                
+                PlayerPrefs.SetInt("SavedMin", _timeMin);
+                PlayerPrefs.SetInt("SavedSec", _timeSec);
             }
             PlayerPrefs.Save();
             SceneManager.LoadScene("Menu");

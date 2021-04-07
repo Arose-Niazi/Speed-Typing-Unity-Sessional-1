@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-
-    public static float GameVolume;
-    public static string PlayerName;
+    private static float _gameVolume;
+    private static string _playerName;
 
     public Slider volumeSetting;
     public AudioSource soundSource;
@@ -20,7 +19,10 @@ public class Settings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (playerNameText != null)
+        {
+            playerNameText.text = _playerName;
+        }
     }
 
     // Update is called once per frame
@@ -28,19 +30,13 @@ public class Settings : MonoBehaviour
     {
         if (volumeSetting != null)
         {
-            GameVolume = volumeSetting.value;
+            _gameVolume = volumeSetting.value;
         }
-        
         if (playerNameField != null)
         {
-            PlayerName = playerNameField.text;
+            _playerName = playerNameField.text;
         }
-
-        if (playerNameText != null)
-        {
-            playerNameText.text = PlayerName;
-        }
-        soundSource.volume = GameVolume;
+        soundSource.volume = _gameVolume;
 
         if (Input.GetKeyDown("escape"))
         {
