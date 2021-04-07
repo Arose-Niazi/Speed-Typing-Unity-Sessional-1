@@ -25,9 +25,9 @@
 
 # Screen shots
 
-![](https://raw.githubusercontent.com/Arose-Niazi/Music-Player-Unity/main/Screens/1.png)
+![](https://raw.githubusercontent.com/Arose-Niazi/Speed-Typing-Unity-Sessional-1/main/Screens/1.png)
 
-![](https://raw.githubusercontent.com/Arose-Niazi/Music-Player-Unity/main/Screens/2.png)
+![](https://raw.githubusercontent.com/Arose-Niazi/Speed-Typing-Unity-Sessional-1/main/Screens/2.png)
 
-![](https://raw.githubusercontent.com/Arose-Niazi/Music-Player-Unity/main/Screens/3.png)
+![](https://raw.githubusercontent.com/Arose-Niazi/Speed-Typing-Unity-Sessional-1/main/Screens/3.png)
 
